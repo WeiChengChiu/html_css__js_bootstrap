@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- vue -->
+  <div id="counter">
+    <h1>Vue</h1>
+    <h3>{{count}}</h3>
+    <button v-on:click="add">+1</button>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#counter',
+      data: {
+        count: 0,
+      },
+      methods: {
+        add() {
+          this.count += 1;
+        }
+      }
+    });
+  </script>
+
+  <!-- Jquery -->
+  <div id="counter_jq">
+    <h1>Jquery</h1>
+    <h3>0</h3>
+    <button>+1</button>
+  </div>
+  <script>
+    $('#counter_jq button').click(() => {
+      let count = parseInt($('#counter_jq h3').text(), 10);
+      count += 1;
+      $('#counter_jq h3').text(count);
+    });
+  </script>
+</body>
+
+</html>
