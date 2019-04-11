@@ -1,0 +1,13 @@
+MVVM
+Model(Vue instance data) -
+ViewModel(Vue instance) -
+View(Dom)
+
+learning points
+Vue 模板 資料跟Dom連結(v-if, v-else, v-for, v-bind, v-model, v-on)
+
+Vue 實例 ViewModel(data, props, computed, methods, watch)
+
+Vue 組件 （Vue 模板, Vue 實例, css）單一檔案, commonJS, webpack打包 組件匯出, 匯入
+
+vue cli(webpack)
