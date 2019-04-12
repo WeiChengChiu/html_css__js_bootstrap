@@ -18,7 +18,7 @@ const double = x => x * 2; // can skip to this way
 arr.map(function (ele, idx) {
   return ele + idx;
 });
-arr.map((ele, ids) => ele + idx);
+arr.map((ele, idx) => ele + idx);
 btn.addEventListener('click', () => console.log(10));
 
 
