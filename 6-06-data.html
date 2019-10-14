@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="lesson in lessons">
+            <img :src="lesson.img" alt="">
+            <a :href="lesson.url"></a>
+            {{lesson.url}}
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                lessons: [],
+            },
+            methods: {
+                mgStyle(img){
+                    return {
+                        backgroundImage: `url(${img})`, // js object
+                        // 'background-image': `url(${img})`, // css 兩者都可
+                    };
+                }
+            },
+            mounted(){
+                fetch('./data.json')
+                .then(res =>  res.json())
+                .then(lessons => this.lessons = lessons);
+
+                //Jquery
+                // $.getJSON('./data.json').thne(lessons => this.lessons = lessons);
+
+                // axios.get('./data.json').then(res => this.lessons = res.data);
+            },
+        });
+    </script>
+</body>
+
+</html>

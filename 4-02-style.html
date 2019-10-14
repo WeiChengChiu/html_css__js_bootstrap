@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 :style="h1style">Hello world</h1>
+        <!-- bind class 內 可以是 字串, 物件, 陣列(放物件) -->
+
+        <button v-on:click="shrink">變小</button>
+    </div>
+
+    <style>
+        #app{
+            text-align: center;
+        }
+        h1{
+            color: red;
+        }
+    </style>
+
+    <script>
+        // 駝峰是命名 font-size  => fontSize
+        // const commonHeadStyle = {
+        //     fontSize: '40px',
+        // }
+        // const greenWord = {
+        //     color: 'green',
+        // }
+        new Vue({
+            el: '#app',
+            data: {
+                size: 40,
+                // h1style: {
+                //     fontSize: '40px',
+                // }
+                // h1style: [
+                //     commonHeadStyle,
+                //     greenWord,
+                // ],
+            },
+            computed: {
+                h1style(){
+                    return {
+                        fontSize: `${this.size}px`,
+                    };
+                },
+            },
+            methods: {
+                shrink(){
+                    this.size -=1;
+                },
+                // shrink(){
+                //     const size = parseInt(
+                //         this.h1style.fontSize.replace('px'),
+                //         10
+                //     );
+                //     this.h1style.fontSize = `${size-1}px`;
+                // },
+            },
+        });
+    </script>
+</body>
+
+</html>

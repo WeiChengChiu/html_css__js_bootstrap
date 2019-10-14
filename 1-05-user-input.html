@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="counter">
+        <h1>{{count}}</h1>
+        <button v-on:click="add">+1</button>
+
+        <ul>
+            <li v-for="element in elements">{{element}}</li>
+        </ul>
+        <button v-on:click="remove">-1</button>
+        <br>
+        <input type="text" v-model="text">
+        <span>{{text}}</span>
+    </div>
+    <script>
+        new Vue({
+            el: "#counter",
+            data: {
+                text: '',
+                count: 0,
+                elements: [1, 2, 3, 4, 5],
+            },
+            methods: {
+                add() {
+                    this.count += 1;
+                },
+                remove(){
+                    this.elements.pop();
+                },
+            },
+        });
+    </script>
+</body>
+</html>

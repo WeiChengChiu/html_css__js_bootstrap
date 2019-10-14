@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+        <span v-if="see">Now you can see me</span>
+        <span v-else>Now you don't</span>
+
+        <div v-for="step in steps">{{step}}</div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                see: true,
+                steps: [
+                    'step1',
+                    'step2',
+                    'step3',
+                ],
+            },
+        });
+    </script>
+</body>
+</html>

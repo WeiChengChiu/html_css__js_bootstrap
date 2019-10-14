@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <label>
+            <input type="checkbox" v-model="a">
+            <span>a</span>
+        </label>
+        <label>
+            <input type="checkbox" v-model="b">
+            <span>b</span>
+        </label>
+        <label>
+            <input type="checkbox" v-model="c">
+            <span>c</span>
+        </label>
+        <br>
+        <span>{{selected}}</span>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                a: false,
+                b: false,
+                c: false,
+            },
+            computed: {
+                selected(){
+                    // const result = [];
+                    // if(this.a) result.push('a');
+                    // if(this.b) result.push('b');
+                    // if(this.c) result.push('c');
+                    // return result;
+                    return ['a', 'b', 'c'].filter(item => this[item]);
+                },
+                // 用函式參數存取物件屬性要用中括號，不能用小數點
+                // 用小數點的話，會變成直接用「參數名稱」去存取物件的屬性，而不是用我們實際帶入的參數值
+
+
+                // 所以在filter()中，若寫item =&gt; this.item，會變成去找 data中的 item (去找 this.item的意思)
+                // 而不是原先預期的 this.a、this.b、this.c
+
+                // 例如：
+                // (1)在data中多增加個 item:123
+                // (2)把filter()裡面函式的內容改為 item =&gt; console.log(this.item)
+
+                // 這樣就可以看到 this.item 所抓到的值
+            },
+        });
+    </script>
+</body>
+
+</html>

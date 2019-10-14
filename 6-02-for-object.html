@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- for 不能保證 物件 屬性 照順序 ex 數字key -->
+       <div v-for="(value, key) in me">{{key}} - {{value}}</div>
+       <div v-for="item in me2">{{item.props}} - {{item.value}}</div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                me: {
+                    name: 'apple',
+                    age: 10,
+                    password: 123456,
+                    13: '高中',
+                    8: '小學',
+                    5: '幼稚園',
+                },
+                me2: [
+                    {props: 'name', value: 'apple'},
+                    {props: 'age', value: 10},
+                    {props: 'password', value: 123456},
+                    {props: 13, value: '高中'},
+                    {props: 8, value: '小學'},
+                    {props: 5, value: '幼稚園'},
+                ],
+            },
+        });
+    </script>
+</body>
+
+</html>

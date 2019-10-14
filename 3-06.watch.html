@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+      <input type="text" v-model="value">
+      <!-- <span>{{valueX2}}</span> -->
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                value: 0,
+            }, 
+            methods: {},
+            // computed: {
+            //     valueX2(){
+            //         return parseInt(this.value * 2);
+            //     },
+            // },
+            // // 監聽 computed
+            // watch: {
+            //     valueX2(val, oldVal){
+            //         console.log(`${oldVal} -> ${val}`);
+            //     }
+            // },
+
+            // 監聽 data, methods, computed
+            // watch: {
+            //     value(val, oldVal){
+            //         console.log(`${oldVal} -> ${val}`);
+            //     }
+            // },
+
+            // 可以用computed 就不要用watch
+            // 1. code 簡潔, 2. 聲明式, 3. 效能
+            // watch 物件
+            watch: {
+                // value(val, oldVal){
+                //     console.log(`${oldVal} -> ${val}`);
+                // }
+                value: {
+                    handler(val, oldVal){
+                        console.log(`${oldVal} -> ${val}`);
+                    },
+                },
+                // immediate: true,   //true/false  new Vue時 執行
+                // deep: true, // 監聽 物件或陣列 內的值有無改變
+            },
+        });
+    </script>
+</body>
+</html>

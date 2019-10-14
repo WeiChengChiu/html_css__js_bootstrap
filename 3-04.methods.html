@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{count}}</h1>
+        <button v-on:click="add2">+1</button>
+    </div>
+
+    <script>
+      new Vue({
+          el: '#app',
+          data: {
+              count: 0,
+              step: 1,
+          },
+          methods: {
+            add(){
+                this.count += this.step;
+                this.step += 1;
+            },
+            add2(){
+                this.add();
+            }
+          },
+      });
+      // methods 不能跟 data 值 撞名,
+      // methods 內不能用箭頭函式 this 會變 
+    </script>
+</body>
+</html>

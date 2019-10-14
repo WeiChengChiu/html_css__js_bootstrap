@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h4 v-if="loading">Loading</h4>
+        <h4 v-else>Complete</h4>
+        <img 
+            :class="imgClass"
+            @load="loading=false" 
+            src="https://picsum.photos/id/921/200/300" 
+            alt=""
+        >
+    </div>
+    <style>
+        .img.hide{
+            opacity: 0;
+        }
+        .img{
+            transition: opacity 1s;
+        }
+    </style>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                loading: true,
+            },
+            computed: {
+                imgClass(){
+                    if(this.loading){
+                        return 'img hide';
+                    }else {
+                        return 'img';
+                    }
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

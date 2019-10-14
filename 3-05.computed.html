@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="number" v-model="a">+
+        <input type="number" v-model="b">=
+        <input type="number" v-model="c">
+        <br>
+        <span>{{c}}</span>
+    </div>
+
+    <script>
+      new Vue({
+          el: '#app',
+          data: {
+              a: 0,
+              b: 0,
+          },
+          computed: {
+            // c(){
+            //     return parseInt(this.a, 10) + parseInt(this.b, 10);
+            // }, 
+            c: {
+                // 等於 c(){}
+                get(){
+                    return parseInt(this.a, 10) + parseInt(this.b, 10);
+                },
+                set(val){
+                    this.b = parseInt(val, 10) - parseInt(this.a, 10);
+                },
+            },
+          },
+      });
+    </script>
+</body>
+</html>

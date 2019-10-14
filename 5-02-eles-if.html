@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="checked1">
+        <input type="checkbox" v-model="checked2">
+        <h1 v-if="checked1">拍賣1</h1>
+        <h1 v-else-if="checked2">拍賣2</h1>
+        <h1 v-else>拍賣3</h1>
+    </div>
+
+    <style>
+        #app{
+            text-align: center;
+            font-size: 32px;
+            color: red;
+        }
+    </style>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                checked1: false,
+                checked2: false,
+            }
+        });
+    </script>
+</body>
+
+</html>

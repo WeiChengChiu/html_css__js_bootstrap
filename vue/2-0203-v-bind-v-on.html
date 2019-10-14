@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+       <!-- <input type="checkbox" v-bind:checked="checked"> -->
+       <span>{{count}}</span>
+       <input type="checkbox" v-bind:checked="count%2==0">
+       <button v-on:click="toggle">Toggle</button>
+    </div>
+
+    <!-- v-bind v-on 縮寫 -->
+    <!-- <div id="app">
+        <span>{{count}}</span>
+        <input type="checkbox" :checked="count%2==0">
+        <button @click="toggle">Toggle</button>
+    </div> -->
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                // checked: false,
+                count: 0,
+            },
+            methods: {
+                toggle(){
+                    this.count += 1;
+                    this.checked = !this.checked;
+                },
+            },
+        });
+    </script>
+</body>
+</html>

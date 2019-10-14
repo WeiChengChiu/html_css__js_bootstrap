@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- v-if 是否拿掉元素 -->
+    <div id="app">
+        <input type="checkbox" v-model="checked">
+        <template v-if="checked">    
+            <h1>大拍賣</h1>
+            <h2>大拍賣</h2>
+            <h3>大拍賣</h3>
+        </template> 
+        <!-- if 跟 else 之間不能接別的算, 必須先有if -->
+        <template v-else>
+            <h1>老闆不在家</h1>
+        </template> 
+    </div>
+
+    <style>
+        #app{
+            text-align: center;
+            font-size: 32px;
+            color: red;
+        }
+    </style>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                checked: false,
+            },
+        });
+    </script>
+</body>
+
+</html>

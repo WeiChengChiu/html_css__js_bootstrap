@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h2>聲明式 Vue</h2>
+    <div id="counter">
+        <h1>{{count}}</h1>
+        <button v-on:click="add">+1</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#counter',
+            data: {
+                count: 0,
+            },
+            methods: {
+                add(){
+                    this.count += 1;
+                },
+            },
+        }); 
+    </script>
+
+    <h2>命令式 Jquery</h2>
+    <div id="counter2">
+        <h1>0</h1>
+        <button>+1</button>
+    </div>
+    <script>
+        $('#counter2 button').click(() => {
+            let count = parseInt($('#counter2 h1').text(), 10);
+            count += 1;
+            $('#counter2 h1').text(count);
+        });
+    </script>
+</body>
+
+</html>

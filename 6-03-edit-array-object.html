@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+       <ul>
+           <li v-for="num in nums">{{num}}</li>
+       </ul>
+       <ul>
+            <li v-for="(value, key) in books">{{key}} - {{value}}</li>
+        </ul>
+       <button @click="action">Yo</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nums: [1,2,3,4,5,6],
+                books: {
+                    x: 10,
+                    y: 20,
+                },
+            },
+            methods: {
+                action(){
+                    // this.nums.push(this.nums.length+1);
+                    // this.nums.pop();
+                    // this.nums.shift();
+                    // this.nums.unshift(0);
+                    // this.nums.splice(2, 1, 7, 8, 9);
+                    // this.nums.sort();
+                    // this.nums.reverse();
+
+                    // this.nums = this.nums.filter(num => num % 2 === 0);
+                    
+                    // this.nums[0] = 10; // 無效 無法監聽到改變
+                    // this.nums.splice(0, 1, 10);
+
+                    // this.nums.length = 0;  // 無效 無法監聽到改變
+                    // this.nums.splice(0); // 0之後全拿掉
+                    // this.nums = this.nums.slice(1, 3); //idx 1~2
+
+                    // set object value
+                    // this.books.z = 50; // 新增無效 無法監聽到改變
+                    // this.$set(this.books, 'z', 50); // 效果同下
+                    Vue.set(this.books, 'z', 50); // 沒有$, 效果同上
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
