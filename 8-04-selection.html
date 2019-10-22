@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <select v-model="year">
+            <option disabled value="">Select Year</option>
+            <!-- option 沒有指定value 預設 tag內的值 -->
+            <option>2015</option>
+            <!-- option 指定value value 16 -->
+            <option value="16">2016</option>
+            <option>2017</option>
+        </select>
+        <h1>{{year}}</h1>
+
+        <select v-model="selectedYear">
+            <option v-for="y in years" :value="y">{{y}}</option>
+        </select>
+        <h2>{{selectedYear}}</h2>
+
+        <select v-model="selectedGender">
+            <option v-for="option in options" :value="option.value">{{option.text}}</option>
+        </select>
+        <h2>{{selectedGender}}</h2>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                year: "",
+                years: [2015, 2016, 2017],
+                selectedYear: 2015,
+                options: [
+                    {value: 1, text: 'Male'},
+                    {value: 2, text: 'Female'},
+                    {value: 3, text: 'Others'},
+                ],
+                selectedGender: 1,
+            },
+            methods: {
+            },
+        });
+    </script>
+</body>
+
+</html>

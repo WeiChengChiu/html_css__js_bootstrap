@@ -12,31 +12,19 @@
 
 <body>
     <div id="app">
-        <textarea type="text" v-model="message"></textarea>
-        <!-- v-model = v-bind + v-on -->
-        <!-- <input type="text" :value="message" @input="setMessage"> -->
-        <h1>{{message}}</h1>
-        <!-- 換行 方法1 -->
-        <pre>{{message}}</pre>
-
-        <!-- 換行 方法2 寫在 css -->
-        <h2>{{message}}</h2>
+        <input type="radio" id="r1" value="male" v-model="gender">
+        <label for="r1">Male</label>
+        <input type="radio" id="r2" value="female" v-model="gender">
+        <label for="r2">Female</label>
+        <h1>{{gender}}</h1>
     </div>
-    <style>
-        h2{
-            white-space: pre;
-        }
-    </style>
     <script>
         new Vue({
             el: '#app',
             data: {
-                message: '',
+                gender: "",
             },
             methods: {
-                // setMessage(evt) {
-                //     this.message  = evt.target.value
-                // },
             },
         });
     </script>

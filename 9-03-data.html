@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Vue 實例 data是物件,  Vue component data 是函數(可以重複利用) -->
+    <div id="app">
+        <h2>{{count}}</h2>
+        <button @click="count+=1">+1</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+            },
+        });
+    </script>
+
+    <div id="app2">
+        <counter></counter>
+        <counter></counter>
+    </div>
+    <script>
+        Vue.component('counter', {
+            data() {
+                return {
+                    count: 0,
+                };
+            },
+            template: `
+                <div>
+                    <h2>{{count}}</h2>
+                    <button @click="count+=1">+1</button>
+                </div>
+            `,
+        });
+
+        new Vue({
+            el: '#app2',
+        });
+    </script>
+</body>
+
+</html>

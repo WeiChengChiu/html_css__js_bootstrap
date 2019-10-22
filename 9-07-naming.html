@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-first-component></my-first-component>        
+    </div>
+    <script>
+        // my first component
+
+        // component 命名 可用以下三種
+        'my-first-component' // kebab-case // 1. html 引用只能用這種
+        'myFirstComponent' // camelCase  
+        'MyFirstComponent' // PascalCase
+        // 2. template 字串就可以
+
+        Vue.component('myFirstComponent', {
+            //// 2. template 字串就可以
+            template: `
+                <div>
+                    <MyFirstComponent></MyFirstComponent>
+                </div>
+            `,
+        });
+    </script>
+</body>
+
+</html>

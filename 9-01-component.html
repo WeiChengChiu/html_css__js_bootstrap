@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <global-component></global-component>
+        <local-component></local-component>
+    </div>
+    <br>
+    <div id="app2">
+        <global-component></global-component>
+        <local-component></local-component>
+    </div>
+    <script>
+        // component 命名慣例 name-name  小寫-小寫
+        // compenent 在 new Vue 之前
+
+        // Global component
+        Vue.component('global-component', {
+            template: '<div>Global component</div>',
+        });
+
+        new Vue({
+            el: '#app',
+            components: {
+                'local-component': {
+                    template: '<div>Local component</div>',
+                },
+            },
+        });
+
+        new Vue({
+            el: '#app2',
+        });
+    </script>
+</body>
+
+</html>

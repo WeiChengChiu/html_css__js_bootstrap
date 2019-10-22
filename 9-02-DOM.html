@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- 瀏覽器解析時, 發現不合法的<component-name></component-name>tag name 導致被移除, 之後vue render 時沒有該component -->
+    <!-- 解法 component 在合法tag內 render出來 -->
+    <div id="app">
+        <select>
+            <my-component></my-component>
+        </select>
+    </div>
+
+    <div id="app2"></div>
+    <script>
+        Vue.component('my-component', {
+            template: '<option>Hello<option>',
+        });
+
+        new Vue({
+            el: '#app',
+        });
+
+        new Vue({
+            el: '#app2',
+            template: '<select><my-component><my-component></select>',
+        });
+    </script>
+</body>
+
+</html>

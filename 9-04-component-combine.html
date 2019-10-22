@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <todo-list></todo-list>
+    </div>
+    <script>
+        Vue.component('todo-item', {
+            props: ['label'],
+            template: `<li>{{label}}</li>`,
+        });
+
+        Vue.component('todo-input', {
+            data(){
+                return {
+                    text: '',
+                };
+            },
+
+            methods: {
+                submit(){
+                    this.$emit('input', this.text);
+                    this.text = '';
+                },
+            },
+
+            template: `
+                <form @submit.prevent="submit">
+                    <input type="text" v-model="text"/>
+                    <button type="submit">Submit</button>
+                </form>
+            `,
+        });
+
+        Vue.component('todo-list', {
+            data(){
+                return {
+                    todos: ['a', 'b', 'c'],
+                };
+            },
+
+            methods: {
+                addToDo(text){
+                    this.todos.push(text);
+                },
+            },
+
+            template: `
+                <div>
+                    <ul>
+                        <todo-item v-for="todo in todos" :label="todo"></todo-item>
+                    </ul>
+                    <todo-input @input="addToDo"><todo-input>
+                </div>
+            `,
+        });
+
+        new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+
+</html>

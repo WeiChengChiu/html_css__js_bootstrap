@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"
+        integrity="sha256-chlNFSVx3TdcQ2Xlw7SvnbLAavAQLO0Y/LBiWX04viY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 可以用CoreUI bootstrap 延伸的套件 -->
+        <form @submit.prevent="submit">
+            <label>標題</label>
+            <input type="text" v-model="title">
+            <br>
+    
+            <label>URL</label>
+            <input type="text" v-model="url">
+            <br>
+    
+            <label>教師</label>
+            <select name="" id="" v-model="teacher">
+                <option v-for="teacher in teachers">{{teacher}}</option>
+            </select>
+            <br>
+    
+            <label>完成</label>
+            <input type="checkbox" v-model="completed">
+            <br>
+    
+            <label>圖片</label>
+            <input type="file" accept="image/*" @change="fileSelected">
+            <img v-if="image" :src="image" width="200">
+            <br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div>
+            <div v-for="lesson in lessons">
+                <img :src="lesson.image" width="100">
+                <a :href="lesson.url">
+                    <span>{{lesson.title}}</span>
+                </a>
+                <span>{{lesson.teacher}}</span>
+                <span>{{lesson.completed? '完成':''}}</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        const API = '';
+        new Vue({
+            el: '#app',
+            data: {
+                title: '',
+                url: '',
+                teacher: '',
+                teachers: ['Tom', 'Peter', 'Mary', 'Rachel'],
+                completed: false,
+                image: '',
+                lessons: [],
+            },
+            methods: {
+                fileSelected(evt){
+                    const file = evt.target.files.item(0);
+                    const reader = new FileReader();
+                    reader.addEventListener('load', this.imageLoaded);
+                    reader.readAsDataURL(file);
+                },
+
+                imageLoaded(evt){
+                    this.image = evt.target.result;
+                },
+
+                submit(){
+                    const url = 'https://webhook.site/ba2b76c8-5d92-4785-87d6-ae44cbf8e511';
+                    $.post(url, {
+                        title: this.title,
+                        url: this.url,
+                        teacher: this.teacher,
+                        completed: this.completed,
+                        image: this.image,
+                    }).then(()=>{
+                        this.title = '';
+                        this.url = '';
+                        this.teacher = '';
+                        this.completed = '';
+                        this.image = '';
+                        this.loadLessons();
+                    });
+
+                    
+                },
+                loadLessons(){
+                    $.get(API).then(lessons => this.lessons = lessons);
+                },
+            },
+            mounted() {
+                this.loadLessons();
+            },
+        });
+    </script>
+</body>
+
+</html>
